@@ -22,6 +22,27 @@ def calculate(lat1,lon1,lat2,lon2):
 	km = 6371 * c
 	return '' + str(km)
 
+@app.route("/geodist/<string:lat1>/<string:lon1>/<string:lat2>/<string:lon2>/")
+
+def calculate_print(lat1,lon1,lat2,lon2):
+	try:
+		lat1, lon1, lat2, lon2  = float(lat1), float(lon1), float (lat2), float (lon2)
+	except ValueError:
+		abort(404)
+
+	result = 'Distance between (' + str(lat1)+ ',' + str(lon1) + ') and ('+ str(lat2)+ ',' + str(lon2) + ') is '
+	lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+
+    # haversine formula  ( in KM) 
+	dlon = lon2 - lon1 
+	dlat = lat2 - lat1 
+	a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
+	c = 2 * asin(sqrt(a)) 
+	# Radius of earth in kilometers is 6371
+	km = 6371 * c
+	result =  result + str(km)
+	return result
+
 
 if __name__ == "__main__":
     app.run(debug=True)
