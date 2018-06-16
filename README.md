@@ -17,4 +17,13 @@ Other example (distance between San Francisco and San Jose)
 
 67.57488345435594
 
+--
+Addition of calculation between 2 US Zipcodes
+
+`curl https://ggeodist.herokuapp.com/geodistz/94105/58008/`
+This would return:
+`Distance between 94105 (37.789864,-122.393665) and 58008 (46.309281,-97.000547) is 2287.6016255001755 Km`
+
+
+
 
