@@ -5,7 +5,7 @@ from math import radians, cos, sin, asin, sqrt
 def zipDictCreate(geofile):
     """ Put the zipcode in a dict with the tuple (Lat, Long) ."""
     d=dict()
-    with open(geofile, 'rb') as geocsvfile:
+    with open(geofile, 'r') as geocsvfile:
                     fieldnames = ['ZipCode', 'Lat', 'Long']
                     georeader = csv.DictReader(geocsvfile, fieldnames=fieldnames)
                     for ziprow in georeader:
